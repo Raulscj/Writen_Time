@@ -20,6 +20,8 @@ const LoginPage = () => {
     } else {
       setErrorMessage("El nombre de usuario no existe, intenta con otro.");
     }
+    setUsername("");
+    setPassword("");
   };
 
   const handleSignUp = (event) => {
@@ -29,15 +31,19 @@ const LoginPage = () => {
       setErrorMessage("El nombre de usuario ya existe, intenta con otro");
     } else {
       setUsers([...users, { username, password }]);
+      /* Almacena cada usuario como objetos dentro de un array */
       localStorage.setItem(
         "users",
         JSON.stringify([...users, { username, password }])
       );
+      /* Almacena temporalmente al usuario que esta conectado */
       localStorage.setItem(
         "currentUser",
         JSON.stringify({ username, password })
       );
     }
+    setUsername("");
+    setPassword("");
   };
   const handleLogOut = () => {
     localStorage.removeItem("currentUser");
@@ -48,27 +54,32 @@ const LoginPage = () => {
 
   return (
     <div className="login-container">
-      <form>
-        <div className="form-group">
-          <label>Nombre de Usuario:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-        <button onClick={handleSubmit}>Iniciar sesión</button>
-        <button onClick={handleSignUp}>Registrarse</button>
-      </form>
-      {/* VALIDA SI EL EXISTE UN USUARIO ACTIVO */}
+      {/* En caso de no haber usuario conectado */}
+      {!localStorage.getItem("currentUser") && (
+        <form>
+          <div className="form-group">
+            <label>Nombre de Usuario:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+          </div>
+          <button onClick={handleSubmit}>Iniciar sesión</button>
+          <button onClick={handleSignUp}>Registrarse</button>
+        </form>
+      )}
+      {/* En caso de iniciar */}
       {localStorage.getItem("currentUser") ? (
         <div>
           <p>
