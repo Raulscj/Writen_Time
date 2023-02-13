@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PostContext } from "../context/PostContext";
 import "../Styles/Cards.css";
-
+import { Link } from "react-router-dom";
 function PostCard({ post }) {
   const { DeletePost } = useContext(PostContext);
 
@@ -20,6 +20,9 @@ function PostCard({ post }) {
           🗑
         </button>
         <button className="card__delete-button">✏</button>
+        <Link to={`/edit/${post.id}`}>
+          <button>Editar</button>
+        </Link>
         <button className="card__delete-button">📌</button>
       </div>
     </div>
@@ -27,10 +30,3 @@ function PostCard({ post }) {
 }
 
 export default PostCard;
-
-/* import { Link } from "react-router-dom"; */
-{
-  /* <Link to={`/edit/${post.id}`}>
-    <button>Editar</button>
-  </Link> */
-}
