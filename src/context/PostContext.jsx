@@ -6,7 +6,8 @@ export function PostContextProvider(props) {
   //Array
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    setPosts(data);
+    const savedPosts = JSON.parse(localStorage.getItem("posts")) || data;
+    setPosts(savedPosts);
   }, []);
   //CREAR
   function CreatePost(post) {
@@ -20,13 +21,35 @@ export function PostContextProvider(props) {
         token: post.token,
       },
     ]);
+    localStorage.setItem("posts", JSON.stringify([...posts, post]));
   }
   //Eliminar
   function DeletePost(postId) {
     setPosts(posts.filter((post) => post.id !== postId));
+    localStorage.setItem(
+      "posts",
+      JSON.stringify(posts.filter((post) => post.id !== postId))
+    );
+  }
+  //Editar
+  function EditPost(updatedPost, postId) {
+    setPosts(
+      posts.map((post) => {
+        if (post.id === postId) {
+          return {
+            ...post,
+            title: updatedPost.title,
+            content: updatedPost.content,
+            autor: updatedPost.autor,
+            token: updatedPost.token,
+          };
+        }
+        return post;
+      })
+    );
   }
   return (
-    <PostContext.Provider value={{ posts, CreatePost, DeletePost }}>
+    <PostContext.Provider value={{ posts, CreatePost, DeletePost, EditPost }}>
       {props.children}
     </PostContext.Provider>
   );

@@ -31,7 +31,7 @@ const LoginPage = () => {
       setErrorMessage("El nombre de usuario ya existe, intenta con otro");
     } else {
       setUsers([...users, { username, password }]);
-      /* Almacena cada usuario como objetos dentro de un array */
+      /* Almacena cada usuario como objetos dentro de una base de datos*/
       localStorage.setItem(
         "users",
         JSON.stringify([...users, { username, password }])
@@ -58,7 +58,7 @@ const LoginPage = () => {
       {!localStorage.getItem("currentUser") && (
         <form>
           <div className="form-group">
-            <label>Nombre de Usuario:</label>
+            <label>🦰Nombre de Usuario:</label>
             <input
               type="text"
               value={username}
@@ -67,7 +67,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="form-group">
-            <label>Contraseña:</label>
+            <label>🔐Contraseña:</label>
             <input
               type="password"
               value={password}
@@ -75,8 +75,8 @@ const LoginPage = () => {
               required
             />
           </div>
-          <button onClick={handleSubmit}>Iniciar sesión</button>
-          <button onClick={handleSignUp}>Registrarse</button>
+          <button onClick={handleSubmit}>🤖Iniciar sesión</button>
+          <button onClick={handleSignUp}>👨‍💻Registrarse</button>
         </form>
       )}
       {/* En caso de iniciar */}
