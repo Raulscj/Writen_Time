@@ -26,8 +26,11 @@
   font-style: italic;
   margin-bottom: 1rem;
   }
-  
-  .card__delete-button {
+  /* .GroupButton{
+    display: grid;
+    background-color: black;
+  } */
+  .card_button {
   background-color: transparent;
   border: none;
   color: #333;

@@ -13,17 +13,19 @@ function PostCard({ post }) {
         </div>
         <p className="card__content">{post.content}</p>
         <p className="card__autor">Autor: {post.autor}</p>
+        <div className="GroupButton">
         <button
-          className="card__delete-button"
+          className="card_button"
           onClick={() => DeletePost(post.id)}
         >
           🗑
         </button>
-        <button className="card__delete-button">✏</button>
+        <button className="card_button">✏</button>
         <Link to={`/edit/${post.id}`}>
           <button>Editar</button>
         </Link>
-        <button className="card__delete-button">📌</button>
+        <button className="card_button">📌</button>
+        </div>
       </div>
     </div>
   );

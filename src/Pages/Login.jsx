@@ -91,7 +91,7 @@ const LoginPage = () => {
               type="text"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              required
+              
             />
           </div>
           <div className="form-group">
@@ -103,7 +103,7 @@ const LoginPage = () => {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              required
+              
             />
           </div>
           <button onClick={handleSubmit}>
