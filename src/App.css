@@ -10,11 +10,11 @@
   grid-auto-rows: minmax(2rem, auto); */
 }
 nav{
-   grid-area: nav;
+  grid-area: nav;
 }
 aside{
-    grid-area: aside;
+  grid-area: aside;
 }
 section{
-    grid-area: section;
+  grid-area: section;
 } 

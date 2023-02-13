@@ -7,6 +7,7 @@ import {
   faRightToBracket,
   faCashRegister,
 } from "@fortawesome/free-solid-svg-icons";
+
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -70,12 +71,7 @@ const LoginPage = () => {
     setUsername("");
     setPassword("");
   };
-  const handleLogOut = () => {
-    localStorage.removeItem("currentUser");
-    setUsername("");
-    setPassword("");
-    setErrorMessage("");
-  };
+
   //Renderizado
   return (
     <div className="login-container">
@@ -91,7 +87,6 @@ const LoginPage = () => {
               type="text"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              
             />
           </div>
           <div className="form-group">
@@ -103,7 +98,6 @@ const LoginPage = () => {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              
             />
           </div>
           <button onClick={handleSubmit}>
@@ -124,7 +118,6 @@ const LoginPage = () => {
             {JSON.parse(localStorage.getItem("currentUser")).username}!
             {(window.location.href = "/Home")}
           </h1>
-          {/* <button onClick={handleLogOut}>Log Out</button> */}
         </div>
       ) : null}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
