@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import { Post as data } from "../data/post";
 export const PostContext = createContext();
 
 export function PostContextProvider(props) {
+  let data = [];
   //Array
   const [posts, setPosts] = useState([]);
   useEffect(() => {
