@@ -6,7 +6,6 @@ function PostForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [autor, setAutor] = useState("");
-  const [token, setToken] = useState("");
   const { CreatePost } = useContext(PostContext);
   //Funcion de envio del formulario
   const envio = (e) => {
@@ -15,12 +14,10 @@ function PostForm() {
       title,
       content,
       autor,
-      token,
     });
     setTitle("");
     setContent("");
     setAutor("");
-    setToken("");
   };
   //Renderizado
   return (
@@ -57,17 +54,6 @@ function PostForm() {
             setAutor(e.target.value);
           }}
           value={autor}
-          required
-        />
-        <input
-          className="form__input"
-          type="number"
-          name="token"
-          placeholder="Codigo Personal"
-          onChange={(e) => {
-            setToken(e.target.value);
-          }}
-          value={token}
           required
         />
         <button className="form__button">Guardar</button>

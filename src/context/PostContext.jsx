@@ -18,7 +18,6 @@ export function PostContextProvider(props) {
         title: post.title,
         content: post.content,
         autor: post.autor,
-        token: post.token,
       },
     ]);
     localStorage.setItem("posts", JSON.stringify([...posts, post]));
@@ -41,7 +40,6 @@ export function PostContextProvider(props) {
             title: updatedPost.title,
             content: updatedPost.content,
             autor: updatedPost.autor,
-            token: updatedPost.token,
           };
         }
         return post;

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PostContext } from "../context/PostContext";
 
@@ -15,9 +15,7 @@ function EditPostPage() {
   // Aquí iría el código para manejar la edición del post
   // ...
 
-  return console.log("todo ok");
-  // Aquí iría el código para renderizar el formulario
-  // ...
+  return <h1>Gracias por estar aca</h1>;
 }
 
 export default EditPostPage;
