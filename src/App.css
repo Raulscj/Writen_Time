@@ -1,9 +1,10 @@
-.container{
+.Container{
     display: grid;
     width: auto;
     height: auto;
     margin: 0;
     padding: 0;
+    background-color: #b4842bc9;
     grid-template-areas: "nav nav"
     "aside section"
     "aside section";
@@ -12,17 +13,12 @@
 nav{
   grid-area: nav;
   display: flex;
-  background-color: aqua;
-  margin: 0.5rem;
   margin-bottom: 5rem;
 }
 aside{
   grid-area: aside;
-  background-color: green;
-  margin: 0.5rem;
 }
 section{
   grid-area: section;
-  background-color: blue;
   margin: 0.5rem;
 } 

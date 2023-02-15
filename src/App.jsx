@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   //RENDERIZADO
   return (
-    <div className="container">
+    <div className="Container">
       <nav>
         <Navbar />
       </nav>

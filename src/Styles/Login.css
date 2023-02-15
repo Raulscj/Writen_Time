@@ -5,6 +5,19 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100%;
+  /* 
+  background-color: #252326 ; 
+  background-color: #2d5e4c; 
+  background-color: #13444d; 
+  background-color: #939473;
+//////////////////////////
+  background-color: #d4c6a0;
+  background-color: #bc9567 ; Navbar
+  background-color: #fbf6cf;
+  background-color: #e5b45c;
+  */
+
 }
 
 .form-group {
@@ -32,7 +45,7 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
-  background-color: lightblue;
+  background-color: #54142c;
   color: white;
   margin-right: 10px;
   cursor: pointer;
