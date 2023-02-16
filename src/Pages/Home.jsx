@@ -1,10 +1,17 @@
-import App from "../App";
+import Navbar from "../componentes/Nav";
+import PostForm from "../componentes/PostForm";
+import PostList from "../componentes/PostList";
 
-function Home() {
+function App() {
+  // Renderizado
   return (
     <>
-      <App />;
+      <Navbar />
+      <div className="container">
+        <PostForm />
+        <PostList />
+      </div>
     </>
   );
 }
-export default Home;
+export default App;

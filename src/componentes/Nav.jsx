@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "../Styles/Navbar.css";
+import { React, useState } from "react";
+
 const Navbar = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,19 +16,19 @@ const Navbar = () => {
   };
   return (
     <nav className="navbar">
-      <button onClick={handleLogOut}>Log Out</button>
       <div className="navbar-logo">
-        <img
-          src="src\assets\Logo.png"
-          alt="Logo"
-          style={{ width: "50px", height: "50px" }}
-        />
-        <p>Written Time</p>
+        <div className="logo">
+          <img src="src\assets\Logo.png" alt="Logo" />
+        </div>
+        <p className="logo-text">Written Time</p>
       </div>
       <form className="navbar-search">
         <input type="text" placeholder="Buscar..." />
-        <button>Buscar</button>
+        <button className="primario">Buscar</button>
       </form>
+      <button className="log-out" onClick={handleLogOut}>
+        Log Out
+      </button>
     </nav>
   );
 };

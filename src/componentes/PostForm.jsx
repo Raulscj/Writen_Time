@@ -1,13 +1,12 @@
 import { useState, useContext } from "react";
 import { PostContext } from "../context/PostContext";
-import "../Styles/Formulario.css";
 function PostForm() {
   //Datos
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [autor, setAutor] = useState("");
   const { CreatePost } = useContext(PostContext);
-  //Funcion de envio del formulario
+  // Función de envío del formulario
   const envio = (e) => {
     e.preventDefault();
     CreatePost({
@@ -19,46 +18,64 @@ function PostForm() {
     setContent("");
     setAutor("");
   };
-  //Renderizado
+  // Renderizado
   return (
-    <div className="container">
-      <form className="form" onSubmit={envio}>
-        <input
-          className="form__input"
-          type="text"
-          name="titulo"
-          placeholder="Titulo de la publicacion"
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-          value={title}
-          autoFocus
-          required
-        />
-        <textarea
-          className="form__textarea"
-          name="contenido"
-          placeholder="Que estas pensando..."
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-          value={content}
-          required
-        ></textarea>
-        <input
-          className="form__input"
-          type="text"
-          name="autor"
-          placeholder="autor"
-          onChange={(e) => {
-            setAutor(e.target.value);
-          }}
-          value={autor}
-          required
-        />
-        <button className="form__button">Guardar</button>
-      </form>
-    </div>
+    <>
+      <input type="checkbox" id="open-modal" />
+      <label htmlFor="open-modal" className="modal-button"></label>
+      <div className="modal">
+        <div className="modal-container">
+          <form className="form-tweet" onSubmit={envio}>
+            <div className="input-group">
+              <input
+                className="input"
+                type="text"
+                id="titulo"
+                placeholder="Ej: Una tarde con cafe"
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                value={title}
+                autoFocus
+                required
+              />
+              <label htmlFor="titulo" className="input-label">
+                Titulo de la publicación
+              </label>
+            </div>
+            <textarea
+              className="textarea"
+              name="contenido"
+              placeholder="Que estas pensando..."
+              onChange={(e) => {
+                setContent(e.target.value);
+              }}
+              value={content}
+              required
+            ></textarea>
+            <div className="input-group">
+              <input
+                className="input"
+                type="text"
+                id="autor"
+                placeholder="Ej: Tu nombre"
+                onChange={(e) => {
+                  setAutor(e.target.value);
+                }}
+                value={autor}
+                required
+              />
+              <label htmlFor="autor" className="input-label">
+                Autor
+              </label>
+            </div>
+            <div>
+              <button className="primario mx-auto">Publicar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
 export default PostForm;

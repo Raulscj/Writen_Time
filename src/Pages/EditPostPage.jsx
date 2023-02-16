@@ -13,9 +13,8 @@ function EditPostPage() {
   }, [posts, id]);
 
   // Aquí iría el código para manejar la edición del post
-  // ...
 
-  return <h1>Gracias por estar aca</h1>;
+  return <h1>Gracias por estar aca, aun nos encontramos trabajando para ti</h1>;
 }
 
 export default EditPostPage;

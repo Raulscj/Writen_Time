@@ -8,7 +8,7 @@ import {
   faCashRegister,
 } from "@fortawesome/free-solid-svg-icons";
 
-const LoginPage = () => {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState(
@@ -74,14 +74,15 @@ const LoginPage = () => {
 
   //Renderizado
   return (
-    <div className="login-container">
+    <>
       {/* En caso de no haber usuario conectado */}
       {!localStorage.getItem("currentUser") && (
-        <form>
-          <div className="form-group">
-            <label>
+        <form className="login">
+          <h1 className="text-center">Iniciar sesión</h1>
+          <div className="input-group">
+            <label htmlFor="usuario" className="input-label">
               <FontAwesomeIcon icon={faUser} />
-              Nombre de Usuario:
+              <span className="icon-text">Nombre de Usuario:</span>
             </label>
             <input
               type="text"
@@ -89,10 +90,10 @@ const LoginPage = () => {
               onChange={(event) => setUsername(event.target.value)}
             />
           </div>
-          <div className="form-group">
-            <label>
+          <div className="input-group">
+            <label htmlFor="contraseña" className="input-label">
               <FontAwesomeIcon icon={faLock} />
-              Contraseña:
+              <span className="icon-text">Contraseña:</span>
             </label>
             <input
               type="password"
@@ -100,29 +101,23 @@ const LoginPage = () => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </div>
-          <button onClick={handleSubmit}>
-            <FontAwesomeIcon icon={faRightToBracket} />
-            Iniciar sesión
-          </button>
           <button onClick={handleSignUp}>
             <FontAwesomeIcon icon={faCashRegister} />
-            Registrarse
+            <span className="icon-text">Registrarse</span>
+          </button>
+          <button onClick={handleSubmit} className="primario">
+            <FontAwesomeIcon icon={faRightToBracket} />
+            <span className="icon-text">Iniciar sesión</span>
           </button>
         </form>
       )}
       {/* En caso de iniciar */}
       {localStorage.getItem("currentUser") ? (
-        <div>
-          <h1>
-            Bienvenido a WRITTEN TIME,{" "}
-            {JSON.parse(localStorage.getItem("currentUser")).username}!
-            {(window.location.href = "/Home")}
-          </h1>
-        </div>
+        <div className="login">{(window.location.href = "/Home")}</div>
       ) : null}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+    </>
   );
-};
+}
 
 export default LoginPage;

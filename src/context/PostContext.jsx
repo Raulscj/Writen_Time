@@ -9,7 +9,7 @@ export function PostContextProvider(props) {
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || data;
     setPosts(savedPosts);
   }, []);
-  //CREAR
+  // Crear
   function CreatePost(post) {
     setPosts([
       ...posts,

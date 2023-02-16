@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./Styles/Login.css";
-import AppRoutes from "./componentes/AppRoutes";
-/* import App from "./App"; */
+import AppRoutes from "./routes/AppRoutes";
 import { PostContextProvider } from "./context/PostContext";
+import "./assets/styles/General.css";
+import "./assets/styles/Cards.css";
+import "./assets/styles/Formulario.css";
+import "./assets/styles/Navbar.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

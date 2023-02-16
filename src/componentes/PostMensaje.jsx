@@ -1,5 +1,12 @@
 import React from "react";
 
 export default function PostMensaje() {
-  return <h1>PANTALLA DE QUE NO HAY DATOS PARA MOSTRAR</h1>;
+  return (
+    <p className="message-empty">
+      😔
+      <span className="text-empty">
+        Oh... Nuestros usuarios no han publicado nada recientemente
+      </span>
+    </p>
+  );
 }
