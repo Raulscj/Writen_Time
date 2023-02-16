@@ -62,7 +62,7 @@ input#open-modal:checked~ label.modal-button::before {
   content: '✖️ Cancelar';
 }
 input#open-dropdown:checked~.dropdown {
-  /* position: absolute; */
+  position: absolute;
   right: .5rem;
   top: 4rem;
   display: flex;
