@@ -10,7 +10,6 @@ function AppRoutes() {
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
         <Route exact path="/Home" element={<Home />} />
-        <Route exact path="/edit/:id" element={<EditPostPage />} />
       </Routes>
     </BrowserRouter>
   );
