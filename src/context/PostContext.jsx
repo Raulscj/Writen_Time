@@ -57,7 +57,9 @@ export function PostContextProvider(props) {
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, CreatePost, DeletePost, FavPost }}>
+    <PostContext.Provider
+      value={{ posts, favPosts, CreatePost, DeletePost, FavPost }}
+    >
       {props.children}
     </PostContext.Provider>
   );
