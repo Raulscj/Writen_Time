@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "../Pages/Login";
 import Home from "../Pages/Home";
-import EditPostPage from "../Pages/EditPostPage";
 
 function AppRoutes() {
   return (
