@@ -18,9 +18,7 @@ function PostList() {
       }}
     >
       <div>
-        <span style={{ fontSize: "3rem", justifyContent: "center" }}>
-          Favoritos
-        </span>
+        <span style={{ fontSize: "3rem" }}>Favoritos</span>
         {favPosts.map((favPost, index) => (
           <>
             <PostFav key={index} favPost={favPost} />

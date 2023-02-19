@@ -22,10 +22,6 @@ const Navbar = () => {
         </div>
         <p className="logo-text">Written Time</p>
       </div>
-      <form className="navbar-search">
-        <input type="text" placeholder="Buscar..." />
-        <button className="primario">Buscar</button>
-      </form>
       <button className="log-out" onClick={handleLogOut}>
         Log Out
       </button>

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { PostContext } from "../context/PostContext";
-import { Link } from "react-router-dom";
 
 function PostCard({ post }) {
   const { DeletePost, FavPost } = useContext(PostContext);
@@ -23,9 +22,6 @@ function PostCard({ post }) {
           <button className="card_button" onClick={() => DeletePost(post.id)}>
             🗑
           </button>
-          <Link to={`/edit/${post.id}`}>
-            <button>Editar</button>
-          </Link>
           <button className="card_button" onClick={() => FavPost(post.id)}>
             📌
           </button>
