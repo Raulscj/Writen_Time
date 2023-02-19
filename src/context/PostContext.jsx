@@ -6,6 +6,8 @@ export function PostContextProvider(props) {
   //Array
   const [posts, setPosts] = useState([]);
   const [postsFav, setPostsFav] = useState([]);
+  const [favPosts, setFavPosts] = useState([]);
+
   useEffect(() => {
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || data;
     setPosts(savedPosts);
@@ -33,49 +35,29 @@ export function PostContextProvider(props) {
       JSON.stringify(posts.filter((post) => post.id !== postId))
     );
   }
-  //Editar
-  function EditPost(updatedPost, postId) {
-    setPosts(
-      posts.map((post) => {
-        if (post.id === postId) {
-          return {
-            ...post,
-            title: updatedPost.title,
-            content: updatedPost.content,
-            autor: updatedPost.autor,
-          };
-        }
-        return post;
-      })
-    );
-  }
-  //Fav
   function FavPost(postId) {
-    let postsFav2 = postsFav;
-    console.log(JSON.stringify(postId));
-    posts.forEach((t) => {
-      if (postId == t.id) {
-        if (postsFav2.length) {
-          postsFav2.forEach((p, i) => {
-            if (p.id == postId) {
-              postsFav2.splice(i, 1);
-            } else {
-              postsFav2.push(t);
-            }
-          });
-        } else {
-          postsFav2.push(t);
-        }
-      }
-    });
-    localStorage.setItem("postsFav", JSON.stringify(postsFav2));
-    setPostsFav(JSON.parse(localStorage.getItem("postsFav")));
-    console.log(postsFav);
+    const selectedPost = posts.find((post) => post.id === postId);
+    const isFav = favPosts.some((post) => post.id === postId);
+
+    if (isFav) {
+      const updatedFavPosts = favPosts.filter((post) => post.id !== postId);
+      setFavPosts(updatedFavPosts);
+      localStorage.setItem("favPosts", JSON.stringify(updatedFavPosts));
+    } else {
+      const updatedFavPosts = [...favPosts, selectedPost];
+      setFavPosts(updatedFavPosts);
+      localStorage.setItem("favPosts", JSON.stringify(updatedFavPosts));
+    }
   }
+  useEffect(() => {
+    const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    setPosts(savedPosts);
+    const savedFavPosts = JSON.parse(localStorage.getItem("favPosts")) || [];
+    setFavPosts(savedFavPosts);
+  }, []);
+
   return (
-    <PostContext.Provider
-      value={{ posts, CreatePost, DeletePost, EditPost, FavPost }}
-    >
+    <PostContext.Provider value={{ posts, CreatePost, DeletePost, FavPost }}>
       {props.children}
     </PostContext.Provider>
   );

@@ -26,7 +26,7 @@ function PostCard({ post }) {
           <Link to={`/edit/${post.id}`}>
             <button>Editar</button>
           </Link>
-          <button className="card_button" onClick={() => FavPost(post.Id)}>
+          <button className="card_button" onClick={() => FavPost(post.id)}>
             📌
           </button>
         </div>
