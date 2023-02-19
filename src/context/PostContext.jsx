@@ -5,16 +5,19 @@ export function PostContextProvider(props) {
   let data = [];
   //Array
   const [posts, setPosts] = useState([]);
+  const [postsFav, setPostsFav] = useState([]);
   useEffect(() => {
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || data;
     setPosts(savedPosts);
+    const savedPostsFav = JSON.parse(localStorage.getItem("postsFav")) || data;
+    setPostsFav(savedPostsFav);
   }, []);
   // Crear
   function CreatePost(post) {
     setPosts([
       ...posts,
       {
-        id: posts.length,
+        id: post.id,
         title: post.title,
         content: post.content,
         autor: post.autor,
@@ -46,8 +49,33 @@ export function PostContextProvider(props) {
       })
     );
   }
+  //Fav
+  function FavPost(postId) {
+    let postsFav2 = postsFav;
+    console.log(JSON.stringify(postId));
+    posts.forEach((t) => {
+      if (postId == t.id) {
+        if (postsFav2.length) {
+          postsFav2.forEach((p, i) => {
+            if (p.id == postId) {
+              postsFav2.splice(i, 1);
+            } else {
+              postsFav2.push(t);
+            }
+          });
+        } else {
+          postsFav2.push(t);
+        }
+      }
+    });
+    localStorage.setItem("postsFav", JSON.stringify(postsFav2));
+    setPostsFav(JSON.parse(localStorage.getItem("postsFav")));
+    console.log(postsFav);
+  }
   return (
-    <PostContext.Provider value={{ posts, CreatePost, DeletePost, EditPost }}>
+    <PostContext.Provider
+      value={{ posts, CreatePost, DeletePost, EditPost, FavPost }}
+    >
       {props.children}
     </PostContext.Provider>
   );

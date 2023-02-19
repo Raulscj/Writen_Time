@@ -3,7 +3,7 @@ import { PostContext } from "../context/PostContext";
 import { Link } from "react-router-dom";
 
 function PostCard({ post }) {
-  const { DeletePost } = useContext(PostContext);
+  const { DeletePost, FavPost } = useContext(PostContext);
 
   return (
     <div className="card">
@@ -23,11 +23,12 @@ function PostCard({ post }) {
           <button className="card_button" onClick={() => DeletePost(post.id)}>
             🗑
           </button>
-          <button className="card_button">✏</button>
           <Link to={`/edit/${post.id}`}>
             <button>Editar</button>
           </Link>
-          <button className="card_button">📌</button>
+          <button className="card_button" onClick={() => FavPost(post.Id)}>
+            📌
+          </button>
         </div>
       </div>
     </div>

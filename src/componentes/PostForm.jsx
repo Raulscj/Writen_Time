@@ -1,7 +1,9 @@
 import { useState, useContext } from "react";
 import { PostContext } from "../context/PostContext";
+import { v4 as uuidv4 } from "uuid";
 function PostForm() {
   //Datos
+  const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [autor, setAutor] = useState("");
@@ -10,6 +12,7 @@ function PostForm() {
   const envio = (e) => {
     e.preventDefault();
     CreatePost({
+      id: uuidv4(),
       title,
       content,
       autor,
@@ -22,7 +25,11 @@ function PostForm() {
   return (
     <>
       <input type="checkbox" id="open-modal" />
-      <label htmlFor="open-modal" className="modal-button"></label>
+      <label
+        htmlFor="open-modal"
+        className="modal-button"
+        style={{ position: "fixed" }}
+      ></label>
       <div className="modal">
         <div className="modal-container">
           <form className="form-tweet" onSubmit={envio}>
